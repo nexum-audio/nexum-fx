@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.22)
+project(NexumFxDistribution LANGUAGES C CXX)
+set(NEXUM_CORE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/nexum" CACHE PATH "Pinned Nexum shared core")
+if(NOT EXISTS "${NEXUM_CORE_DIR}/CMakeLists.txt")
+ message(FATAL_ERROR "Run git submodule update --init --recursive first")
+endif()
+add_subdirectory("${NEXUM_CORE_DIR}" nexum-core)
